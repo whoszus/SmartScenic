@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<!-- 错误配置 -->
+	<package name="error_default" extends="struts-default"  
+  		abstract="true">  
+	  	<global-results>  
+	  		<result name="exception">/error.jsp</result>  
+	  	</global-results>  
+	  	<global-exception-mappings>  
+	  		<exception-mapping result="exception"  exception="java.lang.Exception" />  
+	  	</global-exception-mappings>  
+  	</package> 
+  	<constant name="struts.action.extension" value="action"></constant>
+	<constant name="struts.convention.result.path" value="/"/> 
+	<include file="strutsxml/struts-userInfo.xml" /> 
+	<include file="strutsxml/struts-sec.xml" /> 
+	<include file="strutsxml/struts-realTimeData.xml" /> 
+	<include file="strutsxml/struts-dayData.xml" /> 
+	<include file="strutsxml/struts-weather.xml" /> 
+	<include file="strutsxml/struts-areaFind.xml" /> 
+	<include file="strutsxml/struts-sort.xml" /> 
+	<include file="strutsxml/struts-map.xml" />
+	<include file="strutsxml/struts-scenicSpot.xml" />
+	<include file="strutsxml/struts-detectionPoint.xml" />
+</struts>    

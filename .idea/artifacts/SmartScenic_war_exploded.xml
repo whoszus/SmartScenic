@@ -1,0 +1,87 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="SmartScenic:war exploded">
+    <output-path>$PROJECT_DIR$/classes/artifacts/SmartScenic_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="SmartScenic" />
+          <element id="jpa-descriptors" facet="SmartScenic/jpa/JPA" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="module" name="log4j-1.2.14.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="asm-3.3.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="asm-commons-3.3.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="asm-tree-3.3.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="commons-fileupload-1.2.2.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="commons-io-2.0.1.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="commons-lang3-3.1.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="freemarker-2.3.19.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="ognl-3.0.6.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="struts2-core-2.3.14.2.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="xwork-core-2.3.14.2.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="struts2-config-browser-plugin-2.3.14.2.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="commons-logging-1.1.1.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="commons-logging-api-1.1.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="spring-struts-3.2.3.RELEASE.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="struts2-spring-plugin-2.3.14.2.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="mybatis-3.2.2.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="hibernate-commons-annotations-4.0.4.Final.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="hibernate-core-4.3.0.Final.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="hibernate-entitymanager-4.3.0.Final.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="hibernate-jpa-2.1-api-1.0.0.Final.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="spring-data-jpa-1.4.3.RELEASE.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="spring-tx-4.0.0.RELEASE.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="spring-test-4.0.0.RELEASE.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="spring-beans-4.0.0.RELEASE.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="spring-context-4.0.0.RELEASE.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="spring-core-4.0.0.RELEASE.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="spring-context-support-4.0.0.RELEASE.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="spring-expression-4.0.0.RELEASE.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="spring-web-4.0.0.RELEASE.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="spring-data-commons-1.6.3.RELEASE.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="spring-aop-4.0.0.RELEASE.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="aopalliance.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="spring-orm-4.0.0.RELEASE.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="slf4j-api-1.6.1.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="spring-jdbc-4.0.0.RELEASE.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="jboss-logging-3.1.3.GA.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="antlr-2.7.7.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="dom4j-1.6.1.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="jandex-1.1.0.Final.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="javassist-3.18.1-GA.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="jboss-logging-annotations-1.2.0.Beta1.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="jboss-transaction-api_1.2_spec-1.0.0.Final.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="mysql-connector-java-5.1.28-bin.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="commons-codec-1.6.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="httpcore-4.3.1.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="httpmime-4.3.2.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="commons-beanutils.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="ezmorph-1.0.6.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="json-jena-1.0.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="json-lib-2.4-jdk15.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="commons-lang-2.3.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="commons-collections-3.1.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="struts2-json-plugin-2.3.16.3.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="commons-httpclient-3.1.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="javadbf-0[1].4.1.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="spring-security-config-3.2.4.RELEASE.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="spring-security-core-3.2.4.RELEASE.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="spring-security-web-3.2.4.RELEASE.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="ahocorasick.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="aspectjrt.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="aspectjweaver.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="commons-email-1.2.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="jcaptcha-1.0-all.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="jxl.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="mail-1.4.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="pinyin4j-2.5.0.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="thumbnailator-0.4.2.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="spring-security-taglibs-3.2.4.RELEASE.jar" module-name="SmartScenic" />
+          <element id="library" level="module" name="junit4" module-name="SmartScenic" />
+          <element id="library" level="project" name="lib" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="SmartScenic/web/Web" />
+    </root>
+  </artifact>
+</component>
