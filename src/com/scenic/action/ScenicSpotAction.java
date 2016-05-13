@@ -22,62 +22,54 @@ public class ScenicSpotAction extends ActionSupport implements
 
 	private MScenicSpot spot = new MScenicSpot();
 
-	private String city;
-	private Integer spotNo; //scenicSpotNo;
+
 
 	/**
-	 *http://localhost:8080/SmartScenic/scenic/scenic_findByCityName.action?
-	 * city=绵阳市 获取某个市下面的所有景区
+	 *
+	 * http://localhost:8080/SmartScenic/scenic/scenic_findByCityName.action?cityName=绵阳市
+	 * 获取某个市下面的所有景区
 	 * 
 	 */
 	public void findByCityName() {
-		String json = sServiceImp.choiceSpotbyCity(
-				CharacterConversion.toUTF8(city)).toString();
+		String json = sServiceImp.choiceSpotbyCity(spot.getCityName());
 		WriteJson.writeToClient(json);
 	}
 
 	/**
 	 * 默认选择获取某一市下aqi排行第一的景点
-	 * http://localhost:8080/SmartScenic/scenic/scenic_choiceDefault
-	 * .action?city=绵阳市
+	 * http://localhost:8080/SmartScenic/scenic/scenic_choiceDefault.action?cityName=绵阳市
 	 */
 	public void choiceDefault() {
 
-		String str = sServiceImp.choiceSpotDefault(CharacterConversion
-				.toUTF8(city));
+		String str = sServiceImp.choiceSpotDefault(spot.getCityName());
 		WriteJson.writeToClient(str);
 	}
 
 	/**
 	 * 显示用户自定义选择的景点信息
-	 * http://localhost:8080/SmartScenic/scenic/scenic_userDefined
-	 * .action?scenicSpotNo=2
+	 * http://localhost:8080/SmartScenic/scenic/scenic_userDefined.action?scenicSpotNo=2
 	 */
 	public void userDefined() {
-		String str = sServiceImp.userDefined(spotNo);
+		String str = sServiceImp.userDefined(spot.getScenicSpotNo());
 		WriteJson.writeToClient(str);
 	}
 
 	/**
 	 * 景点推荐
-	 * http://localhost:8080/SmartScenic/scenic/scenic_spotRecommend.action?
-	 * city=绵阳市
+	 * http://localhost:8080/SmartScenic/scenic/scenic_spotRecommend.action?cityName=绵阳市
 	 */
 	public void spotRecommend() {
-		System.out.println(CharacterConversion.toUTF8(city));
-		String str = sServiceImp
-				.spotRecommend(CharacterConversion.toUTF8(city));
+		String str = sServiceImp.spotRecommend(spot.getCityName());
 		WriteJson.writeToClient(str);
 	}
 
 	/**
 	 * 获取某景区的信息及数据
-	 * http://localhost:8080/SmartScenic/scenic/scenic_showSpotDatas.
-	 * action?scenicSpotNo=1
+	 * http://localhost:8080/SmartScenic/scenic/scenic_showSpotDatas.action?scenicSpotNo=1
 	 */
 	public void showSpotDatas() {
 
-		String str = sServiceImp.showSpotDatas(spotNo);
+		String str = sServiceImp.showSpotDatas(spot.getScenicSpotNo());
 		WriteJson.writeToClient(str);
 	}
 
@@ -126,23 +118,7 @@ public class ScenicSpotAction extends ActionSupport implements
 		
 	}
 
-	public String getCity() {
-		return city;
-	}
 
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-
-
-	public Integer getSpotNo() {
-		return spotNo;
-	}
-
-	public void setSpotNo(Integer spotNo) {
-		this.spotNo = spotNo;
-	}
 
 	@Override
 	public MScenicSpot getModel() {

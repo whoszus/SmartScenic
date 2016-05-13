@@ -195,6 +195,7 @@ public class SortServiceImpl implements ISortService {
 
 		if (spotList.isEmpty())
 			return null;
+
 		for (ScenicSpot s : spotList) {
 			MSpotSort mSort = fetchDatas(s.getScenicSpotNo(), dayNum);
 			mSort.setComprehensive();

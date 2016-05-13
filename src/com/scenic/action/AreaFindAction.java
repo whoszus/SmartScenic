@@ -37,8 +37,7 @@ public class AreaFindAction extends ActionSupport {
 
 	/**
 	 * 显示某一个省份下的城市
-	 * http://luorong:8080/SmartScenic/areaFind/areaFind_showCity.action
-	 * ?provinceId=2
+	 * http://luorong:8080/SmartScenic/areaFind/areaFind_showCity.action?provinceId=2
 	 */
 	public void showCity() {
 		List<MArea> provinces = areaFindService

@@ -42,13 +42,15 @@ public class ScenicSpotServiceImp implements IScenicSpotService {
 	 * 思想：通过城市，查找数据库，获取景区，在封装进model中，转为json字符串
 	 */
 	public String choiceSpotbyCity(String cityName) {
+
 		List<ScenicSpot> spots = sRespository.findByCityName(cityName);
 
-		if (spots.isEmpty()) {
+		if (spots == null) {
 			return null;
 		}
 
 		List<MSpotList> mScenicspots = new ArrayList<MSpotList>();
+
 
 		for (int i = 0; i < spots.size(); i++) {
 			MSpotList s = new MSpotList(spots.get(i).getScenicSpotNo(), spots
@@ -66,13 +68,19 @@ public class ScenicSpotServiceImp implements IScenicSpotService {
 	 */
 	public String choiceSpotDefault(String cityName) {
 
-		List<ScenicSpot> spots = sRespository.findByCityName(cityName);
+		List<ScenicSpot> spots = sRespository.findByCityName(cityName);//通过市，找到相应的景区
 
-		List<DayData> dayDatas = fetchDatas(spots);
+		List<DayData>  dayDatas = new ArrayList<DayData>();
 
-		DayData dayData = dayDatas.get(0);
+		dayDatas = fetchDatas(spots);//找到景区对应的dayData
 
-		System.out.println(dayData.getDdNo());
+		System.out.println(dayDatas.size());
+
+		if(dayDatas.size()==0 ) {
+			return null;
+		}
+		DayData dayData = dayDatas.get(0);//选出aqi最小的景区
+
 
 		ScenicSpot scenicSpot = sRespository.findBySpotNo(dayData
 				.getScenicSpot().getScenicSpotNo());
@@ -89,6 +97,7 @@ public class ScenicSpotServiceImp implements IScenicSpotService {
 	 *根据传来的景区，得到该景区昨日的DayData数据，再根据aqi对所有的DayDa进行排序，返回第一个
 	 */
 	public List<DayData> fetchDatas(List<ScenicSpot> spots) {
+
 		List<DayData> dayDataList = new ArrayList<DayData>();
 		String Day = DateUtil.getSpecifiedDayBefore(DateUtil.getCurrentDate());// 昨天的日期
 
@@ -101,7 +110,7 @@ public class ScenicSpotServiceImp implements IScenicSpotService {
 			}
 		}
 
-		if (dayDataList.isEmpty()) {
+		if (dayDataList.size()==0) {
 			return null;
 		}
 
@@ -153,15 +162,17 @@ public class ScenicSpotServiceImp implements IScenicSpotService {
 
 		List<MSpotRecommend> spotRecommends = new ArrayList<MSpotRecommend>();
 
-		for (int i = 0; i < spots.size(); i++) {
+		for (int i = 0; i < dayDatas.size(); i++) {
+
 			int no = dayDatas.get(i).getScenicSpot().getScenicSpotNo();
 			ScenicSpot s = sRespository.findOne(no);
 
 			MSpotRecommend r = new MSpotRecommend(no, s.getScenicSpotName(), s
 					.getScenicPhoto(), s.getScenicSpotShortInfo());
 			spotRecommends.add(r);
-			System.out.println(new Gson().toJson(r));
+
 		}
+		System.out.println(spotRecommends.size());
 
 		return new Gson().toJson(spotRecommends);
 	}

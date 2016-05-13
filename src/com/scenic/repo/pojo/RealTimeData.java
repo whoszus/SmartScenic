@@ -1,6 +1,5 @@
 package com.scenic.repo.pojo;
 
-import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import java.util.Date;
 
 /**
  * RealTimeData entity. @author MyEclipse Persistence Tools
@@ -22,7 +22,7 @@ public class RealTimeData implements java.io.Serializable {
 
 	private Integer rtdNo;
 	private DetectionPoint detectionPoint;
-	private Timestamp rtdTime;
+	private Date rtdTime;
 	private Float rtdTemperature;
 	private Float rtdOxygenContent;
 	private Float rtdAirSpeed;
@@ -42,7 +42,7 @@ public class RealTimeData implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public RealTimeData(DetectionPoint detectionPoint, Timestamp rtdTime,
+	public RealTimeData(DetectionPoint detectionPoint, Date rtdTime,
 			Float rtdTemperature, Float rtdOxygenContent, Float rtdAirSpeed,
 			Float rtdUltraviolet, Float rtdHumidity, Float rtdPm10,
 			Float rtdPm25, Float rtdNo2, Float rtdSo2, Float rtdCo, Float rtdO3) {
@@ -84,11 +84,11 @@ public class RealTimeData implements java.io.Serializable {
 	}
 
 	@Column(name = "rtd_time", length = 19)
-	public Timestamp getRtdTime() {
+	public Date getRtdTime() {
 		return this.rtdTime;
 	}
 
-	public void setRtdTime(Timestamp rtdTime) {
+	public void setRtdTime(Date rtdTime) {
 		this.rtdTime = rtdTime;
 	}
 

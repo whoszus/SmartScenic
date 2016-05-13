@@ -22,16 +22,14 @@ public class WeatherAction extends ActionSupport {
 
 	// http://localhost:8080/SmartScenic/weather/weather_showZhishu.action?cityName=绵阳
 	public void showZhishu() throws IOException, DocumentException {
-		String str = getWeatherService.getWeatherinfoStr(CharacterConversion
-				.toUTF8(cityName));
+		String str = getWeatherService.getWeatherinfoStr(cityName);
 		String json = getWeatherService.fetchZhishu(str).toString();
 		WriteJson.writeToClient(json);
 	}
 
 	// http://localhost:8080/SmartScenic/weather/weather_showForecast.action?cityName=绵阳
 	public void showForecast() throws IOException, DocumentException {
-		String str = getWeatherService.getWeatherinfoStr(CharacterConversion
-				.toUTF8(cityName));
+		String str = getWeatherService.getWeatherinfoStr(cityName);
 		String json = getWeatherService.fetchForecast(str).toString();
 		WriteJson.writeToClient(json);
 	}

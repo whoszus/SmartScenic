@@ -39,14 +39,15 @@ public class DayDataServiceImpl implements IDayDataService {
 			DayData d = new DayData();
 			d = dRespository.findBySpotAndTime(scenicSpotNo, DateUtil
 					.StringToDate(Day));
-			if (d != null) {
+			if (d  != null)
 				dayDataList.add(d);
-			}
+
 			dayNum--;
 		}
-		if (dayDataList.isEmpty())
+		if (dayDataList.size()==0 || dayDataList.isEmpty())
 			return null;
 		MAqiAndComf mAqiAndComf = new MAqiAndComf(dayDataList);
+
 		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 		String json = gson.toJson(mAqiAndComf);
 
@@ -75,11 +76,15 @@ public class DayDataServiceImpl implements IDayDataService {
 			}
 			dayNum--;
 		}
-		if (dayDataList.isEmpty())
+		if (dayDataList.size()==0 || dayDataList.isEmpty())
 			return null;
+
 		MOtherIndex mIndex = new MOtherIndex(dayDataList);
 
-		return new Gson().toJson(mIndex);
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+		String json = gson.toJson(mIndex);
+
+		return json;
 	}
 
 }
