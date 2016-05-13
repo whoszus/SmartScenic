@@ -41,4 +41,7 @@ public interface IRealTimeDataService {
 
 	// 计算Aqi分指数o3
 	public float calculateAqiSubIndex03(float o3);
+
+	//
+	public void caculatAllSpot();
 }

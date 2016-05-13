@@ -18,7 +18,7 @@ public interface IRealTimeDataRespository extends
 	public List<RealTimeData> findByTime(Integer scenicSpotNo, Date time1,
 			Date time2);
 
-	@Query("select r from RealTimeData r where  r.detectionPoint.detectionPointNo = ?1 and r.rtdTime > ?2 ")
-	public RealTimeData findByLastTime(Integer detectionPointNo, Date time1);
+	@Query("select r from RealTimeData r where  r.detectionPoint.detectionPointNo = ?1 and r.rtdTime > ?2  order by r.rtdNo DESC ")
+	public List<RealTimeData>  findByLastTime(Integer detectionPointNo, Date time1);
 
 }

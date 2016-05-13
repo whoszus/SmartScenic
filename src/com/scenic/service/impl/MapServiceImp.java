@@ -41,13 +41,13 @@ public class MapServiceImp implements IMapService {
 		Day = DateUtil.getSpecifiedDayBefore(Day);
 
 		for (int i = 0; i < detectionPoints.size(); i++) {
-			RealTimeData rData = respository.findByLastTime(detectionPoints
-					.get(i).getDetectionPointNo(), DateUtil.StringToDate(Day));
+			int  detectionPointNo = detectionPoints.get(i).getDetectionPointNo();
+			List<RealTimeData> rData = respository.findByLastTime(detectionPointNo, DateUtil.StringToDate(Day));
 
 			if (rData != null) {
 				MMapDate mapDate = new MMapDate(detectionPoints.get(i)
 						.getDetectionPointLongitude(), detectionPoints.get(i)
-						.getDetectionPointLatitude(), calculateAqi(rData));
+						.getDetectionPointLatitude(), calculateAqi(rData.get(0)));
 
 				mapDates.add(mapDate);
 			}

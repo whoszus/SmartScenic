@@ -1,5 +1,6 @@
 package com.scenic.baseUitl;
 
+import com.scenic.service.impl.RealTimeDataServiceImpl;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Service;
 
@@ -66,6 +67,14 @@ public class UdpServer implements InitializingBean {
             public void run() {
                 // TODO Auto-generated method stub
                 System.out.println("***********计时器*****************");
+                System.out.println("***********计时器*****************");
+                System.out.println("***********计时器*****************");
+                System.out.println("***********计时器*****************");
+                System.out.println("***********计时器*****************");
+                System.out.println("***********计时器*****************");
+                System.out.println("***********计时器*****************");
+                RealTimeDataServiceImpl realTimeDataService = SpringContextUtil.getBean("realTimeDataService");
+                realTimeDataService.caculatAllSpot();
             }
         }, date, 1000*60*60*24);
 

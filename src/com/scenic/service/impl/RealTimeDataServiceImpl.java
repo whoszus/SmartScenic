@@ -3,6 +3,7 @@ package com.scenic.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.scenic.repo.pojo.ScenicSpot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,6 +40,9 @@ public class RealTimeDataServiceImpl implements IRealTimeDataService {
 		String daybefore = DateUtil.getSpecifiedDayBefore(day).toString();
 		datas = realTimeDataRespository.findByTime(scenicSpotNo, DateUtil
 				.getDayTime(daybefore), DateUtil.getDayTime(day));
+		if(datas.size()==0){
+			return;
+		}
 
 		if (datas.size() != 0) {
 			float[] sums = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -130,6 +134,7 @@ public class RealTimeDataServiceImpl implements IRealTimeDataService {
 			dayData.setDdComfortLevel(calculateSSD(dayData.getDdTemperature(),
 					dayData.getDdHumidity(), dayData.getDdAirSpeed()));
 			dayDataRespository.save(dayData);
+			System.out.println(dayData.getDdAirSpeed() + ".............................................");
 		}
 	}
 
@@ -376,6 +381,15 @@ public class RealTimeDataServiceImpl implements IRealTimeDataService {
 		double ssd = (1.818 * t + 18.18) * (0.88 + 0.002 * f) + (t - 32)
 				/ (45 - t) - 3.2 * v + 18.2;
 		return (float) ssd;
+	}
+
+	public void caculatAllSpot(){
+		List<ScenicSpot> scenicSpots = scenicSpotRespository.findAll();
+		if (scenicSpots != null) {
+			for (ScenicSpot s : scenicSpots) {
+				calculateScenicSpotData(s.getScenicSpotNo());
+			}
+		}
 	}
 
 }
