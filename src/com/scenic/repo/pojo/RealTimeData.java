@@ -88,6 +88,26 @@ public class RealTimeData implements java.io.Serializable {
 		return this.rtdTime;
 	}
 
+	@Override
+	public String toString() {
+		return "RealTimeData{" +
+				"rtdNo=" + rtdNo +
+				", detectionPoint=" + detectionPoint +
+				", rtdTime=" + rtdTime +
+				", rtdTemperature=" + rtdTemperature +
+				", rtdOxygenContent=" + rtdOxygenContent +
+				", rtdAirSpeed=" + rtdAirSpeed +
+				", rtdUltraviolet=" + rtdUltraviolet +
+				", rtdHumidity=" + rtdHumidity +
+				", rtdPm10=" + rtdPm10 +
+				", rtdPm25=" + rtdPm25 +
+				", rtdNo2=" + rtdNo2 +
+				", rtdSo2=" + rtdSo2 +
+				", rtdCo=" + rtdCo +
+				", rtdO3=" + rtdO3 +
+				'}';
+	}
+
 	public void setRtdTime(Date rtdTime) {
 		this.rtdTime = rtdTime;
 	}

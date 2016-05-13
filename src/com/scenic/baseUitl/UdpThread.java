@@ -1,7 +1,9 @@
 package com.scenic.baseUitl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -11,8 +13,8 @@ import java.net.SocketException;
 /**
  * Created by linyanying on 2016/5/13.
  */
+@Service
 public class UdpThread implements Runnable {
-
     @Override
     public void run() {
         byte[] buf = new byte[14];
@@ -34,11 +36,15 @@ public class UdpThread implements Runnable {
             }
             //收到udp请求，交给线程处理
 //            Handler handler = Handler.getHandler(dp_receive);
-//            ApplicationContext applicationContext = new ClassPathXmlApplicationContext("")
-
-//            handler.handUpData();
-
-
+            if(SpringContextUtil.getBean("handler") == null){
+                try {
+                    Thread.currentThread().sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            Handler handler = SpringContextUtil.getBean("handler");
+            handler.handUpData(dp_receive);
 
 
         }

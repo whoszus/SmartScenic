@@ -6,6 +6,7 @@ import com.scenic.repo.interf.impl.IRealTimeDataRespository;
 import com.scenic.repo.pojo.DetectionPoint;
 import com.scenic.repo.pojo.RealTimeData;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import java.net.DatagramPacket;
@@ -14,21 +15,15 @@ import java.util.Date;
 /**
  * Created by linyanying on 2016/5/11.
  */
-@Service
-//@Proper
+@Service("handler")
 public class Handler {
     @Autowired
     private IRealTimeDataRespository realTimeDataRespository;
     @Autowired
     private IDetectionPointRespository detectionPointRespository;
 
-    private static  DatagramPacket datagramPacket;
     private  static Handler handler;
     private static RealTimeData realTimeData;
-
-    private Handler(DatagramPacket datagramPacket) {
-        this.datagramPacket = datagramPacket;
-    }
 
     public Handler() {
     }
@@ -41,7 +36,7 @@ public class Handler {
 //
 //    }
 
-    public void handUpData(){
+    public void handUpData(DatagramPacket datagramPacket){
         if(realTimeData ==null){
             realTimeData = new RealTimeData();
         }
@@ -87,12 +82,13 @@ public class Handler {
             j = 13 hex = 56 &&  int = 86 校验和
              */
             if(isHead(fdata[1])){
-                DetectionPoint detectionPoint =  detectionPointRespository.findOne((int)fdata[4]);
+                DetectionPoint detectionPoint =  detectionPointRespository.findOne((int)fdata[3]);
                 realTimeData.setDetectionPoint(detectionPoint);
                 realTimeData.setRtdAirSpeed(fdata[9]+fdata[10]/10); //风速
                 realTimeData.setRtdTemperature(fdata[11]); //温度
                 realTimeData.setRtdHumidity(fdata[12]); //湿度
-                realTimeData.setRtdUltraviolet(fdata[5]); //紫外线无小数部分
+//                realTimeData.setRtdUltraviolet(fdata[5]); //紫外线无小数部分
+                realTimeData.setRtdPm10((fdata[5]*256+fdata[6])/10);
                 realTimeData.setRtdPm25((fdata[7]*256+fdata[8])/10);
                 realTimeData.setRtdTime(new Date());
             }else{
@@ -104,10 +100,6 @@ public class Handler {
             if(isComplete(realTimeData)){
                 //持久化pojo
                 System.out.println(realTimeData);
-                //realTimeData 指向null;
-
-                //            System.out.println(udpData + "    " + System.currentTimeMillis());
-
 //                System.out.println("  " + realTimeData.getRtdPm25()  + " " );
                 realTimeDataRespository.save(realTimeData);
                 realTimeData = null;
