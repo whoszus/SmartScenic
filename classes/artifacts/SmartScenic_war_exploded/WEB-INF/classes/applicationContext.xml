@@ -56,6 +56,6 @@
 			<tx:method name="*" read-only="true" />
 		</tx:attributes>
 	</tx:advice>
-
+	<bean id="springContextUtil" class="com.scenic.baseUitl.SpringContextUtil"/>
 
 </beans>
