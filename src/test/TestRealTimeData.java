@@ -47,9 +47,8 @@ public class TestRealTimeData {
 	public void testFindByLastTime() throws ParseException {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date time1 = sdf.parse("2016-3-11 00:00:00");
-		System.out.println(realTimeDataRespository.findByLastTime(1, time1).get(0)
-				.getRtdTime());
-		;
+//		System.out.println(realTimeDataRespository.findByLastTime(1, time1).getRtdTime());
+
 
 	}
 }
