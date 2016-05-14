@@ -25,7 +25,7 @@ public class DetectionPointServiceImpl implements IDetectionPoinSercive {
 
 	@Override
 	public List<MDetectionPoint> findByScenicSpotNo(Integer scenicSpotNo) {
-		List<DetectionPoint> spot = dRespository.findByScenicSpotNo(1);
+		List<DetectionPoint> spot = dRespository.findByScenicSpotNo(scenicSpotNo);
 		if (spot.isEmpty() || spot.size() == 0) {
 			return null;
 		}
