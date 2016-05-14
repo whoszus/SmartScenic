@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="2393913996">
+  <component name="DataSourceManagerImpl" format="xml" hash="1361098438">
     <data-source source="LOCAL" name="MySQL - smartscenic1@192.168.31.189" uuid="88c9006c-adbc-488d-a48f-d097a94f7b5d">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>

@@ -133,14 +133,16 @@ public class SortServiceImpl implements ISortService {
 		List<ScenicSpot> spotList = new ArrayList<ScenicSpot>();
 
 		spotList = scenicSpotRespository.findByCityName(cityName);
-		if (spotList.isEmpty())
+		if (spotList.size()==0 || spotList==null)
 			return null;
+
 		for (ScenicSpot s : spotList) {
 			MSpotSort mSort = fetchDatas(s.getScenicSpotNo(), dayNum);
+
 			if (mSort != null)
 				sorts.add(mSort);
 		}
-		if (sorts.isEmpty())
+		if (sorts.size()==0 || sorts==null)
 			return null;
 		Collections.sort(sorts, new Comparator<MSpotSort>() {
 			public int compare(MSpotSort arg0, MSpotSort arg1) {
@@ -162,19 +164,29 @@ public class SortServiceImpl implements ISortService {
 	public MSpotSort fetchDatas(int ScenicSpotNo, int days) {
 		if (days <= 0)
 			return null;
+
 		List<DayData> dayDatas = new ArrayList<DayData>();
 		String day = DateUtil.getCurrentDate();// 今天的日期
 
 		for (int i = 0; i < days; i++) {
-			day = DateUtil.getSpecifiedDayBefore(day).toString();// 前一天的日期
-			DayData data = new DayData();
 
-			data = dataRespository.findBySpotAndTime(ScenicSpotNo, DateUtil
+			day = DateUtil.getSpecifiedDayBefore(day).toString();// 前一天的日期
+
+			DayData data = dataRespository.findBySpotAndTime(ScenicSpotNo, DateUtil
 					.getDayTime(day));
-			if (data != null)
-				dayDatas.add(data);
+
+			if (data == null)
+				continue;
+
+			dayDatas.add(data);
 		}
-		MSpotSort mSort = calcalculateAvg(dayDatas);
+
+
+		MSpotSort mSort;
+		mSort = calcalculateAvg(dayDatas);
+
+		if(mSort==null)
+			return null;
 
 		return mSort;
 	}
@@ -193,17 +205,21 @@ public class SortServiceImpl implements ISortService {
 
 		spotList = scenicSpotRespository.findByCityName(cityName);
 
-		if (spotList.isEmpty())
+		if (spotList.size()==0 || spotList==null)
 			return null;
 
 		for (ScenicSpot s : spotList) {
 			MSpotSort mSort = fetchDatas(s.getScenicSpotNo(), dayNum);
+
+			if(mSort==null)
+				continue;
+
 			mSort.setComprehensive();
-			if (mSort != null)
 				sorts.add(mSort);
 		}
+
 		System.out.println(sorts.size());
-		if (sorts.isEmpty())
+		if (sorts.size()==0 || sorts ==null )
 			return null;
 
 		Collections.sort(sorts, new Comparator<MSpotSort>() {
