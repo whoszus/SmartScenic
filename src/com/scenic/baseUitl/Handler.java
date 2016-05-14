@@ -1,12 +1,10 @@
 package com.scenic.baseUitl;
 
-import com.oracle.webservices.internal.api.message.PropertySet;
 import com.scenic.repo.interf.impl.IDetectionPointRespository;
 import com.scenic.repo.interf.impl.IRealTimeDataRespository;
 import com.scenic.repo.pojo.DetectionPoint;
 import com.scenic.repo.pojo.RealTimeData;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import java.net.DatagramPacket;
@@ -91,6 +89,8 @@ public class Handler {
                 realTimeData.setRtdPm10((fdata[5]*256+fdata[6])/10);
                 realTimeData.setRtdPm25((fdata[7]*256+fdata[8])/10);
                 realTimeData.setRtdTime(new Date());
+                float salt = (float) Math.random();
+                realTimeData.setRtdNo2(3+salt);
             }else{
                 realTimeData.setRtdSo2(fdata[5]*256+fdata[6]);
                 realTimeData.setRtdCo((fdata[7]*256 + fdata[8])/10);

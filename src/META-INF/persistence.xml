@@ -29,10 +29,10 @@
     		<!--配置数据库用户名 -->
     		<property name="hibernate.connection.username" value="root" />
     		<!--配置数据库密码-->
-    		<property name="hibernate.connection.password" value="root" />
+    		<property name="hibernate.connection.password" value="atcswust798" />
     		<!--配置数据库url -->
     		<property name="hibernate.connection.url"
-    			value="jdbc:mysql://192.168.31.189:3306/smartscenic1?useUnicode=true&amp;characterEncoding=UTF-8" />
+    			value="jdbc:mysql://202.115.161.220:3306/smartscenic1?useUnicode=true&amp;characterEncoding=UTF-8" />
     		<!--设置外连接抓取树的最大深度 -->
     		<property name="hibernate.max_fetch_depth" value="3" />
     		<!--自动输出schema创建DDL语句 -->

@@ -9,7 +9,7 @@
 
 
 body {
-	font-family:"Microsoft YaHei",Î¢ÈíÑÅºÚ,"MicrosoftJhengHei",»ªÎÄÏ¸ºÚ,STHeiti,MingLiu;
+	font-family:"Microsoft YaHei",Î¢ï¿½ï¿½ï¿½Åºï¿½,"MicrosoftJhengHei",ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½,STHeiti,MingLiu;
 	font-size:14px;
 	font-weight:300;
 	line-height:1.6em;
@@ -548,6 +548,10 @@ margin-bottom: 25%;
 	line-height: 135%;
 	margin: 0 0;
 	padding: 0 0;
+}
+footer{
+	line-height: 4em;
+	margin-top: 1em;
 }
 
 /*---change---*/

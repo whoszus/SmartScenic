@@ -1,14 +1,11 @@
 package test;
 
-import org.junit.Test;
+import com.scenic.service.IDayDataService;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import com.scenic.repo.interf.impl.IDayDataRespository;
-import com.scenic.repo.interf.impl.IDetectionPointRespository;
-import com.scenic.service.IDayDataService;
+import org.testng.annotations.Test;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration( { "classpath:/applicationContext.xml" })
