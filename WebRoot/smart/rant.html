@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>景点排行</title>
+
+		<!-- Bootstrap -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/responsive-slider.css" rel="stylesheet">
+		<link rel="stylesheet" href="css/animate.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/style.css">
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	</head>
+
+	<body onload="javascript:rant()">
+		<header>
+			<div class="container">
+				<div class="row">
+					<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+						<div class="container-fluid">
+							<div class="navbar-header">
+								<div class="navbar-brand">
+									<a href="index.html"><h1>SmartPoint</h1></a>
+								</div>
+							</div>
+							<div class="menu menu_right" id="sidediv">
+								<ul class="nav nav-tabs" role="tablist" id="address">
+									<li role="presentation"><a href="#">绵阳仙海湖</a></li>
+								</ul>
+								<div>
+									<ul id="side"></ul>
+								</div>
+							</div>
+							<div class="menu menu_left">
+								<ul class="nav nav-tabs" role="tablist">
+									<li role="presentation"><a href="index.html">首页</a></li>
+									<li role="presentation" class="active"><a href="rant.html">排行</a></li>
+									<li role="presentation"><a href="change.html">变化</a></li>
+									<li role="presentation"><a href="map.html">地图</a></li>
+								</ul>
+							</div>
+						</div>
+					</nav>
+				</div>
+			</div>
+
+			<div class="container">
+				<div class="row">
+					<nav class="navbar navbar-default" role="navigation">
+						<div class="container-fluid">
+							<div class="navbar-header">
+								<div class="navbar-brand">
+									<a href="index.html"><h1>SmartPoint</h1></a>
+								</div>
+							</div>
+							<div class="menu menu_right">
+								<ul class="nav nav-tabs" role="tablist">
+									<li role="presentation" class="active"><a href="index.html">首页</a></li>
+									<li role="presentation"><a href="rant.html">排行</a></li>
+									<li role="presentation"><a href="change.html">变化</a></li>
+									<li role="presentation"><a href="map.html">地图</a></li>
+								</ul>
+							</div>
+						</div>
+					</nav>
+				</div>
+			</div>
+		</header>
+
+		<div class="container">
+			<div class="row">
+				<div class="rant-border">
+					<div style="margin-top: 50px;">
+						<h2 style="text-align: center;">全市景区排行</h2>
+						<div class="menu menu_right" id="index">
+							<ul class="nav nav-tabs" role="tablist">
+								<li role="presentation" class="active" value="0"><a>AQI排行</a></li>
+								<li role="presentation" value="1"><a>舒适度排行</a></li>
+								<li role="presentation" value="2"><a>综合排行</a></li>
+							</ul>
+						</div>
+						<div class="menu menu_left" id="time">
+							<ul class="nav nav-tabs" role="tablist">
+								<li role="presentation" value="0"><a>昨日排行</a></li>
+								<li role="presentation" class="active" value="1"><a>前7天排行</a></li>
+								<li role="presentation" value="2"><a>前30天排行</a></li>
+							</ul>
+						</div>
+					</div>
+					<hr style="border:0;background-color: inherit;height:1px;">
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="">
+					<div class="col-xs-2">
+						<div class="bounceIn dis-group" data-wow-offset="0" data-wow-delay="1.3s">
+							<div class="list-group">
+								<div class="list-group-item active">
+									<p class=" list-group-item-heading text_center">排名</p>
+								</div>
+								<div class="rant_list"></div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-xs-2">
+						<div class="bounceIn dis-group" data-wow-offset="0" data-wow-delay="1.3s">
+							<div class="list-group">
+								<div class="list-group-item active">
+									<p class=" list-group-item-heading text_center">空气质量状况</p>
+								</div>
+								<div class="rant_list"></div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-xs-2">
+						<div class="bounceIn dis-group" data-wow-offset="0" data-wow-delay="1.3s">
+							<div class="list-group">
+								<div class="list-group-item active">
+									<p class=" list-group-item-heading text_center">景点</p>
+								</div>
+								<div class="rant_list"></div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-xs-2">
+						<div class="bounceIn dis-group" data-wow-offset="0" data-wow-delay="1.3s">
+							<div class="list-group">
+								<div class="list-group-item active">
+									<p class="list-group-item-heading text_center">城市</p>
+								</div>
+								<div class="rant_list"></div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-xs-2">
+						<div class="bounceIn dis-group" data-wow-offset="0" data-wow-delay="1.3s">
+							<div class="list-group">
+								<div class="list-group-item active">
+									<p class=" list-group-item-heading text_center">AQI</p>
+								</div>
+								<div class="rant_list"></div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-xs-2">
+						<div class="bounceIn dis-group" data-wow-offset="0" data-wow-delay="1.3s">
+							<div class="list-group">
+								<div class="list-group-item active">
+									<p class=" list-group-item-heading text_center">舒适度</p>
+								</div>
+								<div class="rant_list"></div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--start footer-->
+		<footer>
+			<div class="sub-footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="copyright">
+								<p><span></span></p>
+								<p><span>智慧景区</span></p>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!--end footer-->
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="js/jquery-2.1.1.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/myjs.js"></script>
+		<script src="js/wow.min.js"></script>
+
+	</body>
+
+</html>
