@@ -1,5 +1,8 @@
 //index.html
-var Baseurl = "http://10.10.4.20";
+//var Baseurl = "http://10.10.4.20";
+var Baseurl = "http://202.115.161.220:8080/SmartScenic";
+
+
 function index() {
 	var AQIvalue;
 	$(function() {
@@ -13,10 +16,10 @@ function index() {
 		//温馨提示
 		$.ajax({
 			type: "GET",
-			url: Baseurl+"/scenic/scenic_choiceDefault.action",
+			url: Baseurl+"/scenic/scenic_userDefined.action",
 			dataType: "jsonp",
 			data: {
-				cityName: "绵阳市"
+                scenicSpotNo: "2"
 			},
 			success: function(data) {
 				console.log(data[0]);
@@ -165,12 +168,12 @@ function change() {
 		}, function() {
 			$("#side").slideUp(200);
 		});
-		$.ajax({
+		/*$.ajax({
 			type: "GET",
 			url: Baseurl+"/scenic/scenic_findByCityName.action",
 			dataType: "jsonp",
 			data: {
-				city: "绵阳市"
+				cityName: "绵阳市"
 			},
 			success: function(data) {
 				for (var i = 0; i < data.length; i++) {
@@ -181,7 +184,9 @@ function change() {
 			error: function(e) {
 				console.log(e.responseText);
 			}
-		});
+		});*/
+
+
 
 		//各种指数显示
 		var num = $('.list-group'); //各种指数显示div
@@ -499,26 +504,7 @@ function rant() {
 		})
 	}
 
-	$(function() {
-		//地点切换
-		$.ajax({
-			type: "GET",
-			url: Baseurl+"/scenic/scenic_findByCityName.action",
-			dataType: "jsonp",
-			data: {
-				city: "绵阳市"
-			},
-			success: function(data) {
-				for (var i = 0; i < data.length; i++) {
-					console.log(data[i]);
-					$("#side").append("<li><a style='cursor:pointer'>" + data[i].scenicSpotName + "</a></li>");
-				}
-			},
-			error: function(e) {
-				console.log(e.responseText);
-			}
-		});
-	})
+
 }
 
 //introduce.html

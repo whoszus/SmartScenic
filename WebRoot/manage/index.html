@@ -32,7 +32,7 @@
 		<style type="text/css"></style>
 	</head>
 
-	<body class="skin-black">
+	<body class="skin-black" onload="javascript:showSpot()">
 		<!-- header logo: style can be found in header.less -->
 		<header class="header">
 			<a href="index.html" class="logo">
@@ -235,7 +235,7 @@
 
 							<!--chat start-->
 							<section class="panel">
-								<header class="panel-heading">
+								<header class="panel-heading" >
 									当前景点下的检测点
 								</header>
 								<div class="panel-body" id="noti-box">
@@ -292,6 +292,7 @@
 
 		<!-- Director App -->
 		<script src="js/Director/app.js" type="text/javascript"></script>
+		<script src="js/manage.js" type="text/javascript" charset="UTF-8"></script>
 
 		<script>
 			$('#noti-box').slimScroll({
@@ -299,24 +300,15 @@
 				size: '5px',
 				BorderRadius: '5px'
 			});
-		
-		
-			var list = $('.table-hover > tbody > tr');
-			list.click(function() {
-				$(this).addClass('point-active').siblings().removeClass('point-active');
-			});
+
+
+
+
 			
 			$(".detection-point").click(function(){
-				alert("请点击景点列表选择景点！");
+				alert("请点击监测点管理！");
 			})
-						
-			$(".table-hover>tbody>tr>td>span.label").click(function(){
-				window.location.href = "scenicSpot.html";
-			})
-			$(".table-hover>tbody>tr>td>span.badge").click(function(){
-				window.location.href = "detectionPoint.html";
-			})
-		</script>
+			</script>
 	</body>
 
 </html>
