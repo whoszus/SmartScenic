@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html >
 
 	<head>
 		<meta charset="UTF-8" />
@@ -32,14 +32,14 @@
 									<a href="index.html"><h1>SmartPoint</h1></a>
 								</div>
 							</div>
-							<div class="menu menu_right" id="sidediv">
+							<!--<div class="menu menu_right" id="sidediv">
 								<ul class="nav nav-tabs" role="tablist" id="address">
 									<li role="presentation"><a href="#">绵阳仙海湖</a></li>
 								</ul>
 								<div>
 									<ul id="side"></ul>
 								</div>
-							</div>
+							</div>-->
 							<div class="menu menu_left">
 								<ul class="nav nav-tabs" role="tablist">
 									<li role="presentation" class="active"><a href="index.html">首页</a></li>
@@ -54,7 +54,146 @@
 			</div>
 		</header>
 
-		<!-- Responsive slider - START -->
+		<!--景点切换-->
+		<div class="col-lg-5" id="side1">
+
+			<!--chat start-->
+			<section class="panel">
+				<header class="panel-heading">
+					当前省市下的检测点
+				</header>
+				<div class="panel-body" id="noti-box">
+
+					<div class="alert alert-block alert-danger">
+						仙海湖
+					</div>
+					<div class="alert alert-success">
+						富乐山
+					</div>
+					<div class="alert alert-info">
+						汉平阳宫阙
+					</div>
+					<div class="alert alert-warning">
+						佛爷洞
+					</div>
+
+					<div class="alert alert-block alert-danger">
+						九皇山
+					</div>
+					<div class="alert alert-success">
+						药王谷
+					</div>
+					<div class="alert alert-info">
+						吉娜羌寨
+					</div>
+					<div class="alert alert-warning">
+						北川新城
+					</div>
+
+				</div>
+			</section>
+
+		</div>
+
+		<!--城市切换-->
+
+		<div class="col-md-12" id="side2">
+			<div class="panel">
+				<div class="panel-body">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th style="width: 85px">省份</th>
+								<th>城市</th>
+								<th style="width: 85px" style="float: right;" id="turn">返回</th>
+							</tr>
+						</thead>
+						<tbody id="cityTable">
+							<tr>
+								<td>直辖市</td>
+								<td>
+									<p>北京市</p>
+									<p>天津市</p>
+									<p>上海市</p>
+									<p>重庆市</p>
+								</td>
+							</tr>
+							<tr>
+								<td>河北省</td>
+								<td>Clean database</td>
+							</tr>
+							<tr>
+								<td>3.</td>
+								<td>Cron job running</td>
+							</tr>
+							<tr>
+								<td>4.</td>
+								<td>Fix and squish bugs</td>
+							</tr>
+						</tbody>
+
+					</table>
+				</div>
+				<!-- /.panel-body -->
+			</div>
+			<!-- /.panel -->
+		</div>
+		<!-- /.col -->
+
+		</div>
+
+		<!--       topImages        -->
+		<div class="topImages">
+			<div class="imageDiv">
+				<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+					<!-- Indicators -->
+					<ol class="carousel-indicators">
+						<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+						<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+						<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+					</ol>
+
+					<!-- Wrapper for slides -->
+					<div class="carousel-inner" role="listbox">
+						<div class="item active">
+							<img src="img/img4.jpg" alt="...">
+						</div>
+						<div class="item">
+							<img src="img/img2.jpg" alt="...">
+						</div>
+						<div class="item">
+							<img src="img/img5.jpg" alt="...">
+						</div>
+						<div class="carousel-caption">
+							<p>智慧景区</p>
+							<p class="eng_Name">Wisdom scenic spot</p>
+							<button type="button" class="btn btn-default but-active" id="sidediv">
+									<span class="glyphicon glyphicon-map-marker" aria-hidden="true" id="address"></span> 绵阳仙海湖
+								</button>
+							<button type="button" class="btn btn-default but" id="city">
+								<span class="glyphicon glyphicon-send" aria-hidden="true"></span> 更改地点
+							</button>
+						</div>
+					</div>
+					<div>
+						<script type="text/javascript">
+						</script>
+					</div>
+
+					<!-- Controls -->
+					<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+						<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+						<span class="sr-only">Previous</span>
+					</a>
+					<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+						<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+						<span class="sr-only">Next</span>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- Responsive slider - START 
 		<div class="slider">
 			<div class="">
 				<div class="">
@@ -83,7 +222,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div>-->
 		<!-- Responsive slider - END -->
 
 		<div class="container">
@@ -95,8 +234,8 @@
 								<h4 style="text-align: center">温馨提示</h4>
 								<hr>
 								<p class="list-group-item-text" style="line-height: 200%;margin-top: 0%" id="notice">
-									<b>西科大空气质量状况：</b>良
-									<br/><b>健康建议：</b> 
+									<b>绵阳空气质量状况：</b>良
+									<br/><b>健康建议：</b>
 								</p>
 							</div>
 						</div>
@@ -207,10 +346,11 @@
 		<script src="js/jquery-2.1.1.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/fliplightbox.min.js" ></script>s
-		
+		<script type="text/javascript" src="js/fliplightbox.min.js"></script>s
+
 		<script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
 		<script type="text/javascript" src="js/myjs.js"></script>
+		
 
 	</body>
 

@@ -18,7 +18,6 @@ public class DayDataAction extends ActionSupport {
  	 */
 	public void showAqiAndComf() {
 		String json = dayDataService.showAqiAndComf(scenicSpotNo);
-
 		WriteJson.writeToClient(json);
 	}
 
@@ -38,5 +37,7 @@ public class DayDataAction extends ActionSupport {
 	public void setScenicSpotNo(Integer scenicSpotNo) {
 		this.scenicSpotNo = scenicSpotNo;
 	}
+
+
 
 }
