@@ -10,8 +10,9 @@ public class MOtherIndex {
 	private List<Date> time = new ArrayList<Date>();
 	private List<Float> temperature = new ArrayList<Float>();
 	private List<Float> humidity = new ArrayList<Float>();
-	private List<Float> ultraviolet = new ArrayList<Float>();
-	private List<Float> oxygenContent = new ArrayList<Float>();
+	private List<Float> pm25 = new ArrayList<Float>();
+	private List<Float> pm10 =  new ArrayList<Float>();
+	private List<Float> airSpeed = new ArrayList<Float>();
 
 	public MOtherIndex(List<DayData> datas) {
 		if (datas.isEmpty())
@@ -34,17 +35,22 @@ public class MOtherIndex {
 					humidity.add(null);
 				}
 
-				if (d.getDdUlteraviolet() != null) {
-					System.out.println(d.getDdUlteraviolet());
-					ultraviolet.add(d.getDdUlteraviolet());
+				if (d.getDdPm25()!= null) {
+					pm25.add(d.getDdUlteraviolet());
 				} else {
-					ultraviolet.add(null);
+					pm25.add(null);
 				}
 
-				if (d.getDdOxygenContent() != null) {
-					oxygenContent.add(d.getDdOxygenContent());
+				if (d.getDdPm10() != null) {
+					pm10.add(d.getDdOxygenContent());
 				} else {
-					oxygenContent.add(null);
+					pm10.add(null);
+				}
+
+				if (d.getDdAirSpeed()!= null) {
+					airSpeed.add(d.getDdOxygenContent());
+				} else {
+					airSpeed.add(null);
 				}
 
 			}
@@ -76,20 +82,27 @@ public class MOtherIndex {
 		this.humidity = humidity;
 	}
 
-	public List<Float> getUltraviolet() {
-		return ultraviolet;
+	public List<Float> getPm10() {
+		return pm10;
 	}
 
-	public void setUltraviolet(List<Float> ultraviolet) {
-		this.ultraviolet = ultraviolet;
+	public void setPm10(List<Float> pm10) {
+		this.pm10 = pm10;
 	}
 
-	public List<Float> getOxygenContent() {
-		return oxygenContent;
+	public List<Float> getPm25() {
+		return pm25;
 	}
 
-	public void setOxygenContent(List<Float> oxygenContent) {
-		this.oxygenContent = oxygenContent;
+	public void setPm25(List<Float> pm25) {
+		this.pm25 = pm25;
 	}
 
+	public List<Float> getAirSpeed() {
+		return airSpeed;
+	}
+
+	public void setAirSpeed(List<Float> airSpeed) {
+		this.airSpeed = airSpeed;
+	}
 }
