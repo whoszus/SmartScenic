@@ -348,13 +348,14 @@ nav#filter a {
 button.btn-default {
 	margin-top:10px;
 	margin-bottom:30px;
-	background-color:#fff;
-	color:#333;
+	background-color:#4CAF50;
+	color:#000;
 }
 button.btn-default:hover {
 	background-color:#ED502E;
 	color:#fff;
 }
+
 textarea.form-control {
 	border-radius:0;
 
@@ -566,12 +567,13 @@ footer{
 	margin-bottom: -30px
 }
 /*--side--*/
-#side{
+#side1,#side2{
 	float: left;
 	z-index: 999;
 	position: absolute;
-	right: 32px;
-	top: 45px;
+	right: 0px;
+	
+	top: 63px;
 }
 #side > li,.list{
 	line-height: 40px;
@@ -581,3 +583,60 @@ footer{
 	width: 100px;
 	border-bottom: solid 2px #6D9C91
 }
+
+/****topImages****/
+
+.carousel-caption p {
+	font-family: "幼圆";
+	font-size: 24px;
+	color: #fff;
+}
+
+.carousel-caption .eng_Name {
+	font-size: 12px;
+}
+
+.carousel-caption button ,
+.carousel-caption button:visited{
+	color: #000;
+	font-size: 10px;
+	margin-bottom: 10px;
+	border: solid 2px #000;
+}
+
+button.btn-default.but-active{
+	background-color: #4caf50;
+}
+
+button.btn-default.but{
+	background-color: #ffb238;
+}
+
+@media (min-width: 769px) {
+	.carousel-caption p {
+		font-size: 4em;
+		margin-bottom: 1em;
+	}
+	.carousel-caption .eng_Name {
+		font-size: 2em;
+	}
+	.carousel-caption button {
+		font-size: 16px;
+		word-spacing: 2px;
+		margin: 70px 10px;
+	}
+}
+.alert {
+    padding: 10px;
+    margin-bottom: 10px;
+ }
+ .table > tbody > tr > td > p {
+    float: left;
+    margin-right: 15px;
+}
+.table>tbody>tr>td, .table>tbody>tr>td>p{
+    padding: 0px; 
+    line-height: 1.42857143; 
+    vertical-align: middle;
+    margin: 10px; 
+  }

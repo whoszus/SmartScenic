@@ -80,7 +80,11 @@ public class Handler {
             j = 13 hex = 56 &&  int = 86 校验和
              */
             if(isHead(fdata[1])){
-                DetectionPoint detectionPoint =  detectionPointRespository.findOne((int)fdata[3]);
+                int point = (int) (Math.random()*10);
+                if(point==0){
+                    point = 9;
+                }
+                DetectionPoint detectionPoint =  detectionPointRespository.findOne(point);
                 realTimeData.setDetectionPoint(detectionPoint);
                 realTimeData.setRtdAirSpeed(fdata[9]+fdata[10]/10); //风速
                 realTimeData.setRtdTemperature(fdata[11]); //温度
