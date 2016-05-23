@@ -57,7 +57,7 @@
     </header>
     <div id="container"></div>
     <div id="r-result">
-        <input type="button"  onclick="openHeatmap();" value="显示数据地图"/><input type="button"  onclick="closeHeatmap();" value="关闭热力图"/>
+        <input type="button"  onclick="openHeatmap();" value="显示数据地图"/><input type="button"  onclick="closeHeatmap();" value="关闭数据地图"/>
     </div>
 </body>
 </html>
@@ -65,35 +65,43 @@
 
 
 <script type="text/javascript">
+    var scenicSpotNo = localStorage.getItem("spotNo");
+    if(scenicSpotNo ==undefined || scenicSpotNo == null ){
+        scenicSpotNo = 2; //默认显示西科大的节点
+    }
+    var points = [];
+    var lng ;
+    var lat ;
     var map = new BMap.Map("container");          // 创建地图实例
-    var point = new BMap.Point(104.70463, 31.545923);
-    map.centerAndZoom(point, 15);             // 初始化地图，设置中心点坐标和地图级别
-    map.enableScrollWheelZoom(); // 允许滚轮缩放
-    map.setMinZoom(15);
-    map.setMaxZoom(18);
-   
-    var points = []  ;
     function getPoints(){
         $.ajax({
             type: "GET",
-            url: "http://202.115.161.220:8080/SmartScenic/map/map_ShowMapData.action",
+            url: "http://42.96.131.73/SmartScenic/map/map_ShowMapData.action",
             dataType: "jsonp",
             data: {
-                scenicSpotNo:2
+                scenicSpotNo:scenicSpotNo
             },
             success : function(data){
                 points = data;
-                console.log(points)
+                lng = points[0].lng;
+                lat = points[0].lat;
+                var point = new BMap.Point(lng, lat);
+                map.centerAndZoom(point, 15);             // 初始化地图，设置中心点坐标和地图级别
+                map.enableScrollWheelZoom(); // 允许滚轮缩放
+                map.setMinZoom(15);
+                map.setMaxZoom(18);
 
+                if(!isSupportCanvas()){
+                    alert('数据地图目前只支持有canvas支持的浏览器,您所使用的浏览器不能使用数据地图功能~')
+                }
+                heatmapOverlay = new BMapLib.HeatmapOverlay({"radius":100});
+                map.addOverlay(heatmapOverlay);
             }
         });
     }
-
     getPoints();
 
-    if(!isSupportCanvas()){
-        alert('热力图目前只支持有canvas支持的浏览器,您所使用的浏览器不能使用热力图功能~')
-    }
+
     //详细的参数,可以查看heatmap.js的文档 https://github.com/pa7/heatmap.js/blob/master/README.md
     //参数说明如下:
     /* visible 热力图是否显示,默认为true
@@ -108,8 +116,7 @@
      其中 key 表示插值的位置, 0~1.
      value 为颜色值.
      */
-    heatmapOverlay = new BMapLib.HeatmapOverlay({"radius":100});
-    map.addOverlay(heatmapOverlay);
+
     //是否显示热力图
     function openHeatmap(){
 

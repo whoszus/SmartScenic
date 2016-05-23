@@ -1,10 +1,16 @@
 package com.scenic.service.impl;
 
-import java.io.BufferedInputStream;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import com.google.gson.Gson;
+import com.scenic.model.MWeatherForecast;
+import com.scenic.model.MZhishu;
+import com.scenic.service.IGetweatherService;
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
+import org.springframework.stereotype.Service;
+
+import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
@@ -12,17 +18,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.zip.GZIPInputStream;
-
-import org.dom4j.Document;
-import org.dom4j.DocumentException;
-import org.dom4j.Element;
-import org.dom4j.io.SAXReader;
-import org.springframework.stereotype.Service;
-
-import com.google.gson.Gson;
-import com.scenic.model.MWeatherForecast;
-import com.scenic.model.MZhishu;
-import com.scenic.service.IGetweatherService;
 
 @Service("getWeatherService")
 public class GetWeatherService implements IGetweatherService {
@@ -81,7 +76,7 @@ public class GetWeatherService implements IGetweatherService {
 
 		// 产生一个解析器对象
 		SAXReader reader = new SAXReader();
-		reader.setEncoding("gbk");
+		reader.setEncoding("utf-8");
 
 		// 将xml文档转换为Document的对象
 		Document document = reader.read(new ByteArrayInputStream(weatherInfo
@@ -113,7 +108,7 @@ public class GetWeatherService implements IGetweatherService {
 
 		// 产生一个解析器对象
 		SAXReader reader = new SAXReader();
-		reader.setEncoding("gbk");
+		reader.setEncoding("utf-8");
 		// 将xml文档转换为Document的对象
 		Document document = reader.read(new ByteArrayInputStream(weatherInfo
 				.getBytes()));

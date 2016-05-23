@@ -1,17 +1,12 @@
 package com.scenic.action;
 
-import java.io.IOException;
-
-import net.sf.json.JSON;
-
-import org.apache.struts2.ServletActionContext;
+import com.opensymphony.xwork2.ActionSupport;
+import com.scenic.baseUitl.WriteJson;
+import com.scenic.service.impl.GetWeatherService;
 import org.dom4j.DocumentException;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.opensymphony.xwork2.ActionSupport;
-import com.scenic.baseUitl.CharacterConversion;
-import com.scenic.baseUitl.WriteJson;
-import com.scenic.service.impl.GetWeatherService;
+import java.io.IOException;
 
 public class WeatherAction extends ActionSupport {
 
@@ -24,6 +19,7 @@ public class WeatherAction extends ActionSupport {
 	public void showZhishu() throws IOException, DocumentException {
 		String str = getWeatherService.getWeatherinfoStr(cityName);
 		String json = getWeatherService.fetchZhishu(str).toString();
+		System.out.println(json);
 		WriteJson.writeToClient(json);
 	}
 

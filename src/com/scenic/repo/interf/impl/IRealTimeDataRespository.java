@@ -20,4 +20,5 @@ public interface IRealTimeDataRespository extends
 	@Query("select r from RealTimeData r where  r.detectionPoint.detectionPointNo = ?1 and r.rtdTime > ?2  order by r.rtdNo DESC ")
 	public List<RealTimeData> findByLastTime(Integer detectionPointNo, Date time1);
 
+//	public List<RealTimeData> getDataByid(int )
 }

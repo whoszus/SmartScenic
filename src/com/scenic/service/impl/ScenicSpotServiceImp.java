@@ -1,22 +1,9 @@
 package com.scenic.service.impl;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.scenic.baseUitl.DateUtil;
-import com.scenic.model.MScenicSpot;
-import com.scenic.model.MScenicSpotinfo;
-import com.scenic.model.MSpotList;
-import com.scenic.model.MSpot;
-import com.scenic.model.MSpotData;
-import com.scenic.model.MSpotRecommend;
+import com.scenic.model.*;
 import com.scenic.repo.interf.impl.ICityResponsitory;
 import com.scenic.repo.interf.impl.IDayDataRespository;
 import com.scenic.repo.interf.impl.IScenicSpotRespository;
@@ -24,6 +11,13 @@ import com.scenic.repo.pojo.City;
 import com.scenic.repo.pojo.DayData;
 import com.scenic.repo.pojo.ScenicSpot;
 import com.scenic.service.IScenicSpotService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 @Service("scenicspotService")
 public class ScenicSpotServiceImp implements IScenicSpotService {
@@ -99,7 +93,7 @@ public class ScenicSpotServiceImp implements IScenicSpotService {
 	public List<DayData> fetchDatas(List<ScenicSpot> spots) {
 
 		List<DayData> dayDataList = new ArrayList<DayData>();
-		String Day = DateUtil.getSpecifiedDayBefore(DateUtil.getCurrentDate());// 昨天的日期
+		String Day = DateUtil.getCurrentDate();// 当前日期
 
 		for (int i = 0; i < spots.size(); i++) {
 			DayData d = new DayData();

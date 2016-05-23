@@ -4,7 +4,7 @@ function showaddr() {
 }
 
 
-var Baseurl = "http://43.96.131.73/SmartScenic";
+var Baseurl = "http://202.115.161.220:8080/SmartScenic";
 //var Baseurl = "http://10.10.4.20";
 
 /*   index.html   */

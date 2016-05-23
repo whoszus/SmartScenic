@@ -1,7 +1,5 @@
 //index.html
-/**/
-var Baseurl = "http://10.10.4.20"; /**/
-var Baseurl = "http://202.115.161.220:8080/SmartScenic";
+var Baseurl = "http://42.96.131.73/SmartScenic";
 
 function index() {
 	var AQIvalue;
@@ -497,13 +495,13 @@ function change() {
 				unit = "%";
 				otherindex();
 				
-				index_date = data.ultraviolet;
+				index_date = data.pm25;
 				Index = "pm2.5";
-				index_id = "#pm2.5";
+				index_id = "#pm25";
 				text = "pm2.5(ug/m3)";
 				unit = "ug/m3";
 				otherindex();
-				index_date = data.oxygenContent;
+				index_date = data.pm10;
 				Index = "pm10";
 				index_id = "#pm10";
 				text = "pm10 (ug/m3)";

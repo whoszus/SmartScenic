@@ -1,10 +1,10 @@
 package com.scenic.model;
 
+import com.scenic.repo.pojo.DayData;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import com.scenic.repo.pojo.DayData;
 
 public class MOtherIndex {
 	private List<Date> time = new ArrayList<Date>();
@@ -36,19 +36,19 @@ public class MOtherIndex {
 				}
 
 				if (d.getDdPm25()!= null) {
-					pm25.add(d.getDdUlteraviolet());
+					pm25.add(d.getDdPm25());
 				} else {
 					pm25.add(null);
 				}
 
 				if (d.getDdPm10() != null) {
-					pm10.add(d.getDdOxygenContent());
+					pm10.add(d.getDdPm10());
 				} else {
 					pm10.add(null);
 				}
 
 				if (d.getDdAirSpeed()!= null) {
-					airSpeed.add(d.getDdOxygenContent());
+					airSpeed.add(d.getDdAirSpeed());
 				} else {
 					airSpeed.add(null);
 				}

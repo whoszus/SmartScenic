@@ -1,19 +1,19 @@
 package com.scenic.service.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.scenic.repo.pojo.ScenicSpot;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.scenic.baseUitl.DateUtil;
 import com.scenic.repo.interf.impl.IDayDataRespository;
 import com.scenic.repo.interf.impl.IRealTimeDataRespository;
 import com.scenic.repo.interf.impl.IScenicSpotRespository;
 import com.scenic.repo.pojo.DayData;
 import com.scenic.repo.pojo.RealTimeData;
+import com.scenic.repo.pojo.ScenicSpot;
 import com.scenic.service.IRealTimeDataService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Service("realTimeDataService")
 public class RealTimeDataServiceImpl implements IRealTimeDataService {
@@ -34,22 +34,26 @@ public class RealTimeDataServiceImpl implements IRealTimeDataService {
 	 * 思想：通过景区编号取出该景区下前一天所有的实时数据，对实时数据进行平均得，然后将值封装进DayData中，存入数据库。
 	 */
 	public void calculateScenicSpotData(int scenicSpotNo) {
-
+		//创建一个List<RealTime> 用于存放实时数据。
 		List<RealTimeData> datas = new ArrayList<RealTimeData>();
 		String day = DateUtil.getCurrentDate();
-		String daybefore = DateUtil.getSpecifiedDayBefore(day).toString();
+		String daylater = DateUtil.getSpecifiedDayLater(day).toString();
+		//通过监测点编号、开始时间、结束时间找到监测点下所有基础数据。存到List中
 		datas = realTimeDataRespository.findByTime(scenicSpotNo, DateUtil
-				.getDayTime(daybefore), DateUtil.getDayTime(day));
+				.getDayTime(day), DateUtil.getDayTime(daylater));
 		if(datas.size()==0){
 			return;
 		}
-
 		if (datas.size() != 0) {
+			//创建sums数组用于存放对应数据的总和。
 			float[] sums = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+			//存放每一种空气污染物总共有多少个有效数据
 			int[] count = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+			//aqi分指数计算结果
 			float[] aqiSubIndex = { -1, -1, -1, -1, -1, -1 };
 			for (RealTimeData data : datas) {
 				if (data.getRtdTemperature() != null) {// 温度
+					//如果实时数据中温度不为空，总和加上当前数值，计数加一
 					sums[0] = sums[0] + data.getRtdTemperature();
 					count[0]++;
 				}
@@ -95,12 +99,18 @@ public class RealTimeDataServiceImpl implements IRealTimeDataService {
 					count[10]++;
 				}
 			}
+			//找到当天当前监测点的dayData数据，如果没有则创建新的实例。
+			DayData dayData = dayDataRespository.findBySpotAndTime(scenicSpotNo,new Date());
+			if(dayData == null){
+				dayData = new DayData();
+				dayData.setScenicSpot(scenicSpotRespository.findOne(scenicSpotNo));
+			}
 
-			DayData dayData = new DayData();
-			dayData.setDdTime(DateUtil.StringToDate(daybefore));// 时间
-			dayData.setScenicSpot(scenicSpotRespository.findOne(scenicSpotNo));
+			dayData.setDdTime(DateUtil.StringToDate(day));// 时间
+
 
 			if (count[0] != 0)
+				//求温度的平均值
 				dayData.setDdTemperature(sums[0] / count[0]);// 温度
 			if (count[1] != 0)
 				dayData.setDdOxygenContent(sums[1] / count[1]);// 含氧量
@@ -130,11 +140,13 @@ public class RealTimeDataServiceImpl implements IRealTimeDataService {
 			if (count[10] != 0) {
 				aqiSubIndex[5] = sums[10] / count[10];
 			}
-			calculateAqi(aqiSubIndex, dayData);
+			dayData.setDdAqi(calculateAqi(aqiSubIndex, dayData).getDdAqi());
 			dayData.setDdComfortLevel(calculateSSD(dayData.getDdTemperature(),
 					dayData.getDdHumidity(), dayData.getDdAirSpeed()));
+			System.out.println(dayData.getDdAqi() + ".............................................");
+
+
 			dayDataRespository.save(dayData);
-			System.out.println(dayData.getDdAirSpeed() + ".............................................");
 		}
 	}
 
@@ -155,6 +167,7 @@ public class RealTimeDataServiceImpl implements IRealTimeDataService {
 		float maxAqi = 0f;// aqi
 		String mainPollution = null;// 主要污染物
 		String grade;// 等级
+
 
 		if (aqiSubIndex[0] != null) {
 			maxAqi = aqiSubIndex[0];
@@ -383,6 +396,9 @@ public class RealTimeDataServiceImpl implements IRealTimeDataService {
 		return (float) ssd;
 	}
 
+	/**
+	 * 计算所有景区每日平均指数
+	 */
 	public void caculatAllSpot(){
 		List<ScenicSpot> scenicSpots = scenicSpotRespository.findAll();
 		if (scenicSpots != null) {
@@ -390,6 +406,10 @@ public class RealTimeDataServiceImpl implements IRealTimeDataService {
 				calculateScenicSpotData(s.getScenicSpotNo());
 			}
 		}
+	}
+
+	public Float maxSubIndex(Float[] a){
+		return null;
 	}
 
 }

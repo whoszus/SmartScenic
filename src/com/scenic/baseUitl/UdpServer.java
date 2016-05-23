@@ -4,9 +4,6 @@ import com.scenic.service.impl.RealTimeDataServiceImpl;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -53,30 +50,50 @@ public class UdpServer implements InitializingBean {
 
         Thread thread = new Thread(new UdpThread());
         thread.start();
-        Date date = new Date();
-        //每天凌晨两点执行
-        if((date.getHours()==2 && date.getMinutes()>0) || (date.getHours()>2)){
-            date.setDate(date.getDate()+1);
-        }
-        date.setHours(2);
-        date.setMinutes(0);
-        date.setSeconds(0);
-        Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new TimerTask() {
+//        Date date = new Date();
+//        //每天凌晨两点执行
+//        if((date.getHours()==2 && date.getMinutes()>0) || (date.getHours()>2)){
+//            date.setDate(date.getDate()+1);
+//        }
+//        date.setHours(2);
+//        date.setMinutes(0);
+//        date.setSeconds(0);
+//        Timer timer = new Timer();
+//        timer.scheduleAtFixedRate(new TimerTask() {
+//            @Override
+//            public void run() {
+//                // TODO Auto-generated method stub
+//                System.out.println("***********计时器*****************");
+//                System.out.println("***********计时器*****************");
+//                System.out.println("***********计时器*****************");
+//                System.out.println("***********计时器*****************");
+//                System.out.println("***********计时器*****************");
+//                System.out.println("***********计时器*****************");
+//                System.out.println("***********计时器*****************");
+//                RealTimeDataServiceImpl realTimeDataService = SpringContextUtil.getBean("realTimeDataService");
+//                realTimeDataService.caculatAllSpot();
+//            }
+//        }, date, 1000*60*60*24);
+
+
+        Timer timer1 = new Timer();
+        timer1.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
+                try {
+                    Thread.currentThread().sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 // TODO Auto-generated method stub
-                System.out.println("***********计时器*****************");
-                System.out.println("***********计时器*****************");
-                System.out.println("***********计时器*****************");
-                System.out.println("***********计时器*****************");
-                System.out.println("***********计时器*****************");
-                System.out.println("***********计时器*****************");
-                System.out.println("***********计时器*****************");
                 RealTimeDataServiceImpl realTimeDataService = SpringContextUtil.getBean("realTimeDataService");
                 realTimeDataService.caculatAllSpot();
+                System.out.println("***********计时器*****************");
+                System.out.println("***********计时器*****************");
+
+
             }
-        }, date, 1000*60*60*24);
+        }, new Date(), 1000*60*10);
 
     }
 }
